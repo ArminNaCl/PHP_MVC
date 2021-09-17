@@ -1,0 +1,15 @@
+{
+    "name": "nacl/php-mvc",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "ArminNaCl",
+            "email": "armin.khoshnamak@gmail.com"
+        }
+    ],
+    "require": {}
+}
