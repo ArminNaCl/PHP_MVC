@@ -11,5 +11,7 @@
             "email": "armin.khoshnamak@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    }
 }
