@@ -65,7 +65,6 @@ class Database
     {
         $statement = $this->pdo->prepare("SELECT migration FROM migrations");
         $statement->execute();
-
         return $statement->fetchAll(\PDO::FETCH_COLUMN);
     }
 
@@ -75,6 +74,10 @@ class Database
         $statement =$this->pdo->prepare("INSERT INTO migrations (migration) VALUES
         $str ");
         $statement->execute();
+    }
+
+    public function prepare($sql){
+        return $this->pdo->prepare($sql);
     }
 
     protected function log($message)
