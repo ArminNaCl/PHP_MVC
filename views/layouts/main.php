@@ -45,7 +45,7 @@ use app\core\Application;
                     
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                           <a class="nav-link  aria-current="page"> <?php echo Application::$app->user->getDisplayName() ?> <a>
+                           <a class="nav-link  aria-current="page" href="/profile"> <?php echo Application::$app->user->getDisplayName() ?> <a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/logout">Log out</a>
