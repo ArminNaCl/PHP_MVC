@@ -11,6 +11,7 @@ class Response
 
     public function redirect(string $url)
     {
+        echo "ididit";
         header('location: '.$url);
     }
     
