@@ -13,7 +13,7 @@ class Application
     public Database $db;
     public Session $session;
     public static Application $app;
-    public Controller $controller;
+    public ?Controller $controller= null;
     public ?DbModel $user;
 
     public string $userClass;

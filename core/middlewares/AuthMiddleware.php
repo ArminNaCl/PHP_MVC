@@ -11,7 +11,7 @@ class AuthMiddleware extends BaseMiddleware
 
     public function __construct(array $actions = [])
     {
-        $this->action = $actions;
+        $this->actions = $actions;
     }
 
     public function execute()
