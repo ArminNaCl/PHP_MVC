@@ -17,7 +17,6 @@ class Application
     public ?DbModel $user;
 
     public string $userClass;
-    public string $layout = 'main';
 
     public function __construct($rootPath,array $config)
     {
@@ -69,14 +68,7 @@ class Application
 
 
     public function run(){
-        try{
-            echo $this->router->resolve();
-        }catch(\Exception $e){
-            $this->response->setStatusCode($e->getCode());
-
-            echo $this->router->renderView('_error',[
-                'exception' => $e
-            ]);
-        }      
+        echo $this->router->resolve();
+         
     }
 }

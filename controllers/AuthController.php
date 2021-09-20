@@ -7,36 +7,11 @@ use app\core\Response;
 use app\models\User;
 use app\core\Application;
 use app\models\LoginForm;
-use app\core\middlewares\AuthMiddleware;
 
 
 
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->registerMiddleware(new AuthMiddleware(['profile']));
-    }
-
-    public function register(Request $request)
-    {
-        $this->setLayout('Auth');
-        $user = new User();
-        if ($request->isPost()){
-            $user->loadData($request->getBody());
-            if($user->validate() && $user->save()){
-                Application::$app->session->setFlash('success','Thanks for Registering');
-                Application::$app->response->redirect('/');
-            }
-            return $this->render('register',[
-                'model' => $user
-            ]);
-        }
-        return $this->render('register',[
-            'model' => $user,
-        ]);
-    }
-
     public function login(Request $request,Response $response)
     {
         $loginForm = new LoginForm();
@@ -53,17 +28,31 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout(Request $request,Response $response)
+    public function register(Request $request)
     {
+        $this->setLayout('Auth');
+        $user = new User();
+        if ($request->isPost()){
+            $user->loadData($request->getBody());
+            if($user->validate() && $user->save()){
+                Application::$app->session->setFlash('success','Thanks for Registering');
+                Application::$app->response->redirect('/');
+                exit;
+            }
+            return $this->render('register',[
+                'model' => $user
+            ]);
+        }
+        return $this->render('register',[
+            'model' => $user,
+            // 'errors' => $errors
+        ]);
+    }
+
+    public function logout(Request $request,Response $response){
         Application::$app->logout();
         $response->redirect('/');
 
     }
-
-    public function profile()
-    {
-        return $this->render('profile');
-    }
-
 
 }
