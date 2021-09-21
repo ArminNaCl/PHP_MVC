@@ -1,4 +1,9 @@
+<?php
 
+$this->title = 'Log in';
+
+
+?>
 
 <h3> Log in </h3>
 <?php $form = \app\core\form\Form::begin('',"post") ?>
